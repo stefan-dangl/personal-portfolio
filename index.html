@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stefan Dangl, MSc - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #000000;
+      --secondary-color: #333333;
+      --accent-color: #3a86ff;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --gray-color: #6c757d;
+      --max-width: 1200px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: #ffffff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header Styles */
+    .header {
+      padding: 100px 0;
+      background-color: var(--light-color);
+    }
+
+    .header-content {
+      max-width: 600px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      /* Reduced from 2.5rem */
+      font-weight: 700;
+      margin-bottom: 15px;
+      /* Reduced from 20px */
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      /* Increased from 1.25rem */
+      color: var(--secondary-color);
+      margin-bottom: 30px;
+      font-weight: 500;
+      /* Added for better visibility */
+    }
+
+    .description {
+      font-size: 1rem;
+      color: var(--gray-color);
+      margin-top: 30px;
+    }
+
+    /* Button Styles */
+    .cta-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Project Button Styles */
+    .play-button,
+    .vps-button,
+    .git-button {
+      display: inline-block;
+      padding: 6px 16px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+      margin-right: 8px;
+      text-align: center;
+      width: auto;
+    }
+
+    .play-button:hover,
+    .vps-button,
+    .git-button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .button-container {
+      margin-top: 10px;
+    }
+
+    /* Selected Works Section */
+    .selected-works {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .view-all {
+      font-weight: 500;
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+    }
+
+    .view-all:hover {
+      color: var(--primary-color);
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .work-item {
+      background-color: #f1f1f1;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .work-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .work-image {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .work-info {
+      padding: 15px;
+    }
+
+    .work-item h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .work-item p {
+      color: var(--gray-color);
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+      text-align: center;
+      background-color: var(--dark-color);
+      color: white;
+    }
+
+    .contact-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .contact-section p {
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0;
+      text-align: center;
+      color: white;
+      font-size: 0.9rem;
+      background-color: var(--dark-color);
+    }
+
+    /* Sticky Navigation */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .sticky-nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 15px 0;
+      margin: 0;
+    }
+
+    .sticky-nav li {
+      margin: 0 15px;
+    }
+
+    .sticky-nav a {
+      font-weight: 500;
+      color: var(--dark-color);
+      transition: color 0.3s ease;
+    }
+
+    .sticky-nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 80px 0;
+      background-color: var(--light-color);
+    }
+
+    .about-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tech-item i {
+      font-size: 2.5rem;
+      color: var(--dark-color);
+    }
+
+    .tech-item span {
+      font-weight: 500;
+    }
+
+    /* Scientific Work Section */
+    .science-section {
+      padding: 80px 0;
+    }
+
+    .science-section .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .science-section h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .science-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .science-card {
+      background-color: var(--light-color);
+      padding: 30px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .science-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .science-card h3 {
+      font-size: 1.1rem;
+      color: var(--gray-color);
+      margin-bottom: 5px;
+    }
+
+    .science-card .year {
+      font-size: 0.9rem;
+      color: var(--gray-color);
+      margin-bottom: 10px;
+    }
+
+    .science-card .title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .pdf-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .pdf-button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .header {
+        padding: 60px 0;
+      }
+
+      .header h1 {
+        font-size: 1.75rem;
+        /* Adjusted for mobile */
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        /* Adjusted for mobile */
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .sticky-nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .science-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-image {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.5rem;
+        /* Adjusted for small mobile */
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        /* Adjusted for small mobile */
+      }
+
+      .cta-button {
+        padding: 10px 20px;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tech-item i {
+        font-size: 2rem;
+      }
+
+      .work-image {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Navigation -->
+  <nav class="sticky-nav">
+    <div class="container">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#science">Research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1>Hello! I'm Stefan Dangl, MSc.</h1>
+        <p class="subtitle">IoT Fullstack Developer: From the hardware to the web interface</p>
+        <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Let's Talk →</a>
+        <p class="description">Concentrate on expanding your business while I ensure your digital presence distinguishes
+          itself from competitors.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <i class="fab fa-rust"></i>
+          <span>Rust</span>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-copyright"></i>
+          <span>C/C++</span>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-python"></i>
+          <span>Python</span>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-microchip"></i>
+          <span>VHDL</span>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-robot"></i>
+          <span>STM32</span>
+          <span>Arduino</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Works Section -->
+  <section id="works" class="selected-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Selected projects</h2>
+        <a href="all_projects.html" class="view-all">View All projects →</a>
+      </div>
+
+      <div class="works-grid">
+        <!-- Project 1 -->
+        <div class="work-item">
+          <div class="work-image" style="background-image: url('images/rusty_head_snake.png');"></div>
+          <div class="work-info">
+            <h3>Rusty Head Snake</h3>
+            <p>WebAssembly game written in Rust</p>
+            <div class="button-container">
+              <a href="https://tzuzuzj.github.io/rusty-head-snake/" class="play-button">Play</a>
+              <a href="https://github.com/tzuzuzj/rusty-head-snake" class="git-button">Git</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="work-item">
+          <div class="work-image" style="background-color: #ddd;"></div>
+          <div class="work-info">
+            <h3>Carbon Dioxide Measuring System</h3>
+            <p>MCU based Measurement / Web based Dashboard</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="work-item">
+          <div class="work-image" style="background-image: url('images/vps19.webp');"></div>
+          <div class="work-info">
+            <h3>Software Developer at View Point System GmbH</h3>
+            <p>Developement of Eyetracking Glasses</p>
+            <div class="button-container">
+              <a href="https://viewpointsystem.com/en/" class="vps-button">VPS Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scientific Work Section -->
+  <section id="science" class="science-section">
+    <div class="container">
+      <h2>Research</h2>
+      <div class="science-grid">
+        <div class="science-card">
+          <h3>Master Thesis</h3>
+          <p class="year">2025</p>
+          <p class="title">BPLS - Back Propagation Layer Scheduling</p>
+          <a href="https://repositum.tuwien.at/handle/20.500.12708/198411" class="pdf-button" target="_blank">
+            <i class="fas fa-file-pdf"></i> View PDF
+          </a>
+        </div>
+        <div class="science-card">
+          <h3>Research Paper</h3>
+          <p class="year">2021</p>
+          <p class="title">Adaptive Signal Filtering Platform for a CPS/IoT Ecosystem</p>
+          <a href="https://ieeexplore.ieee.org/document/9453496" class="pdf-button" target="_blank">
+            <i class="fas fa-file-pdf"></i> View PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Let's work together</h2>
+      <p>Have a project in mind or want to discuss potential opportunities?</p>
+      <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Get in touch →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Stefan Dangl, MSc. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
