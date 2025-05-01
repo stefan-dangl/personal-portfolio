@@ -57,21 +57,16 @@
     }
 
     .header h1 {
-      font-size: 2rem;
-      /* Reduced from 2.5rem */
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 500;
       margin-bottom: 15px;
-      /* Reduced from 20px */
-      line-height: 1.2;
     }
 
     .subtitle {
-      font-size: 1.5rem;
-      /* Increased from 1.25rem */
+      font-size: 2rem;
       color: var(--secondary-color);
       margin-bottom: 30px;
-      font-weight: 500;
-      /* Added for better visibility */
+      font-weight: 700;
     }
 
     .description {
@@ -250,6 +245,92 @@
       color: var(--accent-color);
     }
 
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background-color: white;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray-color);
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary-color);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .modal-description {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .modal-date {
+      color: var(--gray-color);
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .modal-section {
+      margin-bottom: 20px;
+    }
+
+    .modal-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .modal-list {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .modal-list li {
+      margin-bottom: 5px;
+    }
+
+
     /* About Section */
     .about-section {
       padding: 80px 0;
@@ -283,6 +364,19 @@
 
     .tech-item span {
       font-weight: 500;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      /* Spacing between text and tech grid */
+      line-height: 1.6;
+      text-align: justify;
+      /* Or "left" for a cleaner look */
+    }
+
+    .about-content p {
+      margin-bottom: 1rem;
     }
 
     /* Scientific Work Section */
@@ -436,7 +530,7 @@
     <div class="container">
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
+        <li><a href="#works">Projects</a></li>
         <li><a href="#science">Research</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -448,10 +542,12 @@
     <div class="container">
       <div class="header-content">
         <h1>Hello! I'm Stefan Dangl, MSc.</h1>
-        <p class="subtitle">IoT Fullstack Developer: From the hardware to the web interface</p>
+        <p class="subtitle">IoT Fullstack Developer: End-to-End Solutions from Chip to Cloud</p>
         <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Let's Talk →</a>
-        <p class="description">Concentrate on expanding your business while I ensure your digital presence distinguishes
-          itself from competitors.</p>
+        <p class="description">
+          Whether optimizing low-power embedded systems or deploying AI at the edge, I ensure secure,
+          scalable, and efficient
+          IoT solutions.</p>
       </div>
     </div>
   </header>
@@ -460,6 +556,18 @@
   <section id="about" class="about-section">
     <div class="container">
       <h2>About Me</h2>
+      <div class="about-content">
+        <p>
+          Since 2016, when I built a board computer for an e-bike, I decided to dedicate my life to embedded systems
+          development. Throughout my journey, I’ve had the opportunity to work on exciting projects, including
+          cutting-edge eye-tracking glasses, various measurement and control systems, and even the development of a
+          gaming console and a MIPS CPU on an FPGA. In addition to my studies at the Technical University of Vienna, I
+          was fortunate to study at the renowned
+          University of Tokyo and Portugal’s Instituto Superior Técnico Lisboa. Despite all the experiences I’ve gained,
+          my hunger for new knowledge remains stronger than ever.
+        </p>
+
+      </div>
       <div class="tech-grid">
         <div class="tech-item">
           <i class="fab fa-rust"></i>
@@ -486,6 +594,7 @@
     </div>
   </section>
 
+
   <!-- Selected Works Section -->
   <section id="works" class="selected-works">
     <div class="container">
@@ -497,34 +606,44 @@
       <div class="works-grid">
         <!-- Project 1 -->
         <div class="work-item">
-          <div class="work-image" style="background-image: url('images/rusty_head_snake.png');"></div>
-          <div class="work-info">
+          <div class="work-image" style="background-image: url('images/rusty_head_snake/rusty_head_snake.png');"
+            onclick="openModal('modal1')"></div>
+          <div class="work-info" onclick="openModal('modal1')">
             <h3>Rusty Head Snake</h3>
             <p>WebAssembly game written in Rust</p>
             <div class="button-container">
-              <a href="https://tzuzuzj.github.io/rusty-head-snake/" class="play-button">Play</a>
-              <a href="https://github.com/tzuzuzj/rusty-head-snake" class="git-button">Git</a>
+              <a href="https://tzuzuzj.github.io/rusty-head-snake/" class="play-button"
+                onclick="event.stopPropagation()">Play</a>
+              <a href="https://github.com/tzuzuzj/rusty-head-snake" class="git-button"
+                onclick="event.stopPropagation()">Git</a>
             </div>
           </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="work-item">
-          <div class="work-image" style="background-color: #ddd;"></div>
+        <div class="work-item" onclick="openModal('modal2')">
+          <div class="work-image"
+            style="background-image: url('images/air_quality_measurement/air_quality_measurement_system.jpg');"
+            onclick="openModal('modal2')"></div>
           <div class="work-info">
-            <h3>Carbon Dioxide Measuring System</h3>
+            <h3>Air Quality Measuring System</h3>
             <p>MCU based Measurement / Web based Dashboard</p>
+            <div class="button-container">
+              <a href="https://github.com/tzuzuzj/air-observation-system" class="git-button"
+                onclick="event.stopPropagation()">Git</a>
+            </div>
           </div>
         </div>
 
         <!-- Project 3 -->
         <div class="work-item">
-          <div class="work-image" style="background-image: url('images/vps19.webp');"></div>
-          <div class="work-info">
-            <h3>Software Developer at View Point System GmbH</h3>
+          <div class="work-image" style="background-image: url('images/vps/vps19.webp');" onclick="openModal('modal3')">
+          </div>
+          <div class="work-info" onclick="openModal('modal3')">
+            <h3>SW Developer at View Point System GmbH</h3>
             <p>Developement of Eyetracking Glasses</p>
             <div class="button-container">
-              <a href="https://viewpointsystem.com/en/" class="vps-button">VPS Website</a>
+              <a href="https://viewpointsystem.com/en/" class="vps-button" onclick="event.stopPropagation()">Website</a>
             </div>
           </div>
         </div>
@@ -539,7 +658,7 @@
       <div class="science-grid">
         <div class="science-card">
           <h3>Master Thesis</h3>
-          <p class="year">2025</p>
+          <p class="year">2024</p>
           <p class="title">BPLS - Back Propagation Layer Scheduling</p>
           <a href="https://repositum.tuwien.at/handle/20.500.12708/198411" class="pdf-button" target="_blank">
             <i class="fas fa-file-pdf"></i> View PDF
@@ -560,9 +679,9 @@
   <!-- Contact Section -->
   <section id="contact" class="contact-section">
     <div class="container">
-      <h2>Let's work together</h2>
+      <h2>Let's get in touch</h2>
       <p>Have a project in mind or want to discuss potential opportunities?</p>
-      <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Get in touch →</a>
+      <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Linkedin →</a>
     </div>
   </section>
 
@@ -572,6 +691,148 @@
       <p>© 2025 Stefan Dangl, MSc. All rights reserved.</p>
     </div>
   </footer>
+
+
+  <!-- Project Modals -->
+  <!-- Modal 1: Rusty Head Snake -->
+  <div id="modal1" class="modal-overlay">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+      <h2 class="modal-title">Rusty Head Snake</h2>
+      <p class="modal-date">Completion: 2025</p>
+      <p class="modal-description">A modern take on of the classic Snake game, built with Rust and compiled to
+        WebAssembly. It retains the traditional endless mode while featuring a series of progressively
+        challenging levels. The game supports custom level creation and offers intuitive controls for both
+        keyboard and touch input. <a href="https://tzuzuzj.github.io/rusty-head-snake/" target="_blank"
+          style="color: rgb(20, 20, 164); text-decoration: underline;">Play it now!</a>
+      </p>
+
+      <div class="modal-section">
+        <h3>Technologies Used</h3>
+        <ul class="modal-list">
+          <li>Rust</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Related Topics</h3>
+        <ul class="modal-list">
+          <li>Game Development</li>
+          <li>Rust for web</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Carbon Dioxide Measuring System -->
+  <div id="modal2" class="modal-overlay">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+      <h2 class="modal-title">Carbon Dioxide Measuring System</h2>
+      <p class="modal-date">Completion: 2025</p>
+      <p class="modal-description">An IoT solution for monitoring indoor air quality with real-time CO₂, SO₂ and NH₃
+        measurements. The system includes sensors connected to a microcontroller, a web dashboard for data
+        visualization and a server managing the data transfer from microcontroller to dashboard.</p>
+
+
+      <div class="modal-section">
+        <h3>Technologies Used</h3>
+        <ul class="modal-list">
+          <li>STM32 microcontroller</li>
+          <li>Arduino Flavored C</li>
+          <li>MQ-135 Gas Sensor</li>
+          <li>Python backend</li>
+          <li>Web dashboard</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Related Topics</h3>
+        <ul class="modal-list">
+          <li>IoT Systems</li>
+          <li>Environmental monitoring</li>
+          <li>Real-time data visualization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: View Point System GmbH -->
+  <div id="modal3" class="modal-overlay">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+      <h2 class="modal-title">Software Developer at View Point System GmbH</h2>
+      <p class="modal-date">Duration: 2022 - Present</p>
+      <p class="modal-description">Development of software for advanced eyetracking glasses used in industrial and
+        research applications. Contributed to both firmware and application layers of the product. <a
+          href="https://viewpointsystem.com/en/" target="_blank"
+          style="color: rgb(20, 20, 164); text-decoration: underline;">Official website</a></p>
+
+      <div class="modal-section">
+        <h3>Technologies Used</h3>
+        <ul class="modal-list">
+          <li>Rust</li>
+          <li>Python</li>
+          <li>C/C++</li>
+          <li>VHDL</li>
+          <li>Yocto</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Related Topics</h3>
+        <ul class="modal-list">
+          <li>Wearable computing</li>
+          <li>Human-computer interaction</li>
+          <li>Embedded Linux</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = ''; // Re-enable scrolling
+    }
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function (event) {
+      const modals = document.querySelectorAll('.modal-overlay');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) {
+          activeModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Stop propagation for action buttons
+    document.querySelectorAll('.play-button, .git-button, .vps-button').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    });
+  </script>
+
 </body>
 
 </html>
