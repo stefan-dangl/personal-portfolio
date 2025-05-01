@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefan Dangl, MSc - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --accent-color: #3a86ff;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .header-content {
+            max-width: 600px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: var(--gray-color);
+            margin-top: 30px;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Project Button Styles */
+        .play-button,
+        .vps-button,
+        .git-button {
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            margin-right: 8px;
+            text-align: center;
+            width: auto;
+        }
+
+        .play-button:hover,
+        .vps-button,
+        .git-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+
+        /* Selected Works Section */
+        .selected-works {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .view-all {
+            font-weight: 500;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            color: var(--primary-color);
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .work-item {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .work-info {
+            padding: 15px;
+        }
+
+        .work-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .work-item p {
+            color: var(--gray-color);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-section p {
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            background-color: var(--dark-color);
+        }
+
+        /* Sticky Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .sticky-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .sticky-nav li {
+            margin: 0 15px;
+        }
+
+        .sticky-nav a {
+            font-weight: 500;
+            color: var(--dark-color);
+            transition: color 0.3s ease;
+        }
+
+        .sticky-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-color);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-date {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+        }
+
+        .modal-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .modal-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .modal-list li {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 0;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+                /* Adjusted for mobile */
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+                /* Adjusted for mobile */
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .sticky-nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+                /* Adjusted for small mobile */
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+                /* Adjusted for small mobile */
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-item i {
+                font-size: 2rem;
+            }
+
+            .work-image {
+                height: 180px;
+            }
+
+            .modal {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Hello! I'm Stefan Dangl, MSc.</h1>
+                <p class="subtitle">IoT Fullstack Developer: End-to-End Solutions from Chip to Cloud</p>
+                <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Let's Talk →</a>
+                <p class="description">
+                    Whether optimizing low-power embedded systems or deploying AI at the edge, I ensure secure,
+                    scalable, and efficient
+                    IoT solutions.</p>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Selected Works Section -->
+    <section id="works" class="selected-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>All projects</h2>
+                <a href="index.html" class="view-all">Back →</a>
+            </div>
+
+            <div class="works-grid">
+                <!-- Project 1 -->
+                <div class="work-item">
+                    <div class="work-image"
+                        style="background-image: url('images/rusty_head_snake/rusty_head_snake.png');"
+                        onclick="openModal('modal1')"></div>
+                    <div class="work-info" onclick="openModal('modal1')">
+                        <h3>Rusty Head Snake</h3>
+                        <p>WebAssembly game written in Rust</p>
+                        <div class="button-container">
+                            <a href="https://tzuzuzj.github.io/rusty-head-snake/" class="play-button"
+                                onclick="event.stopPropagation()">Play</a>
+                            <a href="https://github.com/tzuzuzj/rusty-head-snake" class="git-button"
+                                onclick="event.stopPropagation()">Git</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="work-item" onclick="openModal('modal2')">
+                    <div class="work-image"
+                        style="background-image: url('images/air_quality_measurement/air_quality_measurement_system_crop.jpg');"
+                        onclick="openModal('modal2')"></div>
+                    <div class="work-info">
+                        <h3>Air Quality Measuring System</h3>
+                        <p>MCU based Measurement / Web based Dashboard</p>
+                        <div class="button-container">
+                            <a href="https://github.com/tzuzuzj/air-observation-system" class="git-button"
+                                onclick="event.stopPropagation()">Git</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="work-item">
+                    <div class="work-image" style="background-image: url('images/vps/vps19.webp');"
+                        onclick="openModal('modal3')"></div>
+                    <div class="work-info" onclick="openModal('modal3')">
+                        <h3>SW Developer at View Point System GmbH</h3>
+                        <p>Developement of Eyetracking Glasses</p>
+                        <div class="button-container">
+                            <a href="https://viewpointsystem.com/en/" class="vps-button"
+                                onclick="event.stopPropagation()">Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="work-item" onclick="openModal('modal6')">
+                    <div class="work-image"
+                        style="background-image: url('images/bachelor_thesis/spectrals/algorithm_visualisation_crop.png');">
+                    </div>
+                    <div class="work-info">
+                        <h3>Adaptive Signal Filtering </h3>
+                        <p>Dynamic noise reduction through collaboration of MCU, FPGA, and server</p>
+                        <div class="button-container">
+                            <a href="https://github.com/tzuzuzj/dynamic-configuration-platforms-for-digital-noise-filtering-of-signals"
+                                class="git-button" onclick="event.stopPropagation()">Git</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="work-item" onclick="openModal('modal7')">
+                    <div class="work-image" style="background-image: url('images/ddca/dev_board_enhanced.png');"></div>
+                    <div class="work-info">
+                        <h3>Pong Gaming Console</h3>
+                        <p>Custom FPGA implementation developed from scratch</p>
+                        <div class="button-container">
+                            <a href="https://github.com/tzuzuzj/pong-gaming-console" class="git-button"
+                                onclick="event.stopPropagation()">Git</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Project 4 -->
+                <div class="work-item" onclick="openModal('modal4')">
+                    <div class="work-image"
+                        style="background-image: url('images/e_bike/board_computer_enhanced_natural.png');"></div>
+                    <div class="work-info">
+                        <h3>E-Bike Board Computer </h3>
+                        <p>Converting a standard bicycle into an electric bike.</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Project 8 -->
+                <div class="work-item" onclick="openModal('modal8')">
+                    <div class="work-image" style="background-image: url('images/dez/mini_factory_enhanced_crop.png');">
+                    </div>
+                    <div class="work-info">
+                        <h3>Miniature Factory</h3>
+                        <p>Controlling miniature factory plant utilizing PLC</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Project 5 -->
+                <div class="work-item" onclick="openModal('modal5')">
+                    <div class="work-image"
+                        style="background-image: url('images/microcontroller/dev_board_enhanced.png');"></div>
+                    <div class="work-info">
+                        <h3>Led-Matrix Toy</h3>
+                        <p>Led-Matrix controlled by MCU</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Let's get in touch</h2>
+            <p>Have a project in mind or want to discuss potential opportunities?</p>
+            <a href="https://www.linkedin.com/in/stefan-dangl-992568231/" class="cta-button">Linkedin →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Stefan Dangl, MSc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <!-- Modal 1: Rusty Head Snake -->
+    <div id="modal1" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+            <h2 class="modal-title">Rusty Head Snake</h2>
+            <p class="modal-date">Completion: 2025</p>
+            <p class="modal-description">A modern take on of the classic Snake game, built with Rust and compiled to
+                WebAssembly. It retains the traditional endless mode while featuring a series of progressively
+                challenging levels. The game supports custom level creation and offers intuitive controls for both
+                keyboard and touch input. <a href="https://tzuzuzj.github.io/rusty-head-snake/" target="_blank"
+                    style="color: rgb(20, 20, 164); text-decoration: underline;">Play it now!</a>
+            </p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Rust</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Game Development</li>
+                    <li>Rust for web</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Carbon Dioxide Measuring System -->
+    <div id="modal2" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+            <h2 class="modal-title">Carbon Dioxide Measuring System</h2>
+            <p class="modal-date">Completion: 2025</p>
+            <p class="modal-description">An IoT solution for monitoring indoor air quality with real-time CO₂, SO₂ and
+                NH₃ measurements. The system includes sensors connected to a microcontroller, a web dashboard for data
+                visualization and a server managing the data transfer from microcontroller to dashboard.</p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>STM32 microcontroller</li>
+                    <li>Arduino Flavored C</li>
+                    <li>MQ-135 Gas Sensor</li>
+                    <li>Python backend</li>
+                    <li>Web dashboard</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>IoT Systems</li>
+                    <li>Environmental monitoring</li>
+                    <li>Real-time data visualization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: View Point System GmbH -->
+    <div id="modal3" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+            <h2 class="modal-title">Software Developer at View Point System GmbH</h2>
+            <p class="modal-date">Duration: 2022 - Present</p>
+            <p class="modal-description">Development of software for advanced eyetracking glasses used in industrial and
+                research applications. Contributed to both firmware and application layers of the product. <a
+                    href="https://viewpointsystem.com/en/" target="_blank"
+                    style="color: rgb(20, 20, 164); text-decoration: underline;">Official website</a></p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Rust</li>
+                    <li>Python</li>
+                    <li>C/C++</li>
+                    <li>VHDL</li>
+                    <li>Yocto</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Wearable computing</li>
+                    <li>Human-computer interaction</li>
+                    <li>Embedded Linux</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal 4: E-Bike Board Computer -->
+    <div id="modal4" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal4')">&times;</span>
+            <h2 class="modal-title">E-Bike Board Computer</h2>
+            <p class="modal-date">Completion: 2016</p>
+            <p class="modal-description">
+                As part of my high school graduation requirements, I collaborated with two classmates to convert a
+                standard
+                bicycle into an electric bike. My primary responsibility was the design and implementation of the
+                onboard
+                computer system, which involved creating a custom PCB based on a microcontroller and
+                integrating
+                multiple sensors for system controlling and monitoring.</p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>PIC16 microcontroller</li>
+                    <li>Embedded C</li>
+                    <li>Custom PCB design (Altium Designer)</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Embedded systems design</li>
+                    <li>Electric vehicle systems</li>
+                    <li>Human-machine interfaces</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Led-Matrix Toy -->
+    <div id="modal5" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal5')">&times;</span>
+            <h2 class="modal-title">Led-Matrix Toy</h2>
+            <p class="modal-date">Completion: 2020</p>
+            <p class="modal-description">
+                An interactive LED matrix display with programmable patterns and animations.
+                The system supports ASCII character input via UART serial communication and allows for dynamic character
+                manipulation through analog stick control, enabling free movement of displayed elements. The project was
+                part of the 2020 Microcomputer course at the Technical University of Vienna.</p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>STM32 microcontroller</li>
+                    <li>WS2812B addressable LEDs</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>LED matrix displays</li>
+                    <li>Interactive electronics</li>
+                    <li>Embedded graphics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Adaptive Signal Filtering -->
+    <div id="modal6" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal6')">&times;</span>
+            <h2 class="modal-title">Adaptive Signal Filtering</h2>
+            <p class="modal-date">Completion: 2020 (Bachelor Thesis)</p>
+            <p class="modal-description">
+                Research, development, and implementation of adaptive filtering algorithms for real-time noise reduction
+                in edge computing.
+                This project formed the core of my bachelor's thesis at the Technical University of Vienna.
+                The system is designed for low-latency signal processing, particularly for audio applications, using a
+                heterogeneous hardware architecture:
+                an MCU for real-time signal analysis, a server for dynamic filter configuration, and an FPGA for
+                high-performance filtering.
+                The devices communicated via a custom UART-based protocol. Key findings were published in
+                <a href="https://ieeexplore.ieee.org/document/9453496" target="_blank"
+                    style="color: rgb(20, 20, 164); text-decoration: underline;">IEEE
+                    Xplore</a>.
+            </p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Altera FPGA</li>
+                    <li>VHDL for filter implementation</li>
+                    <li>Teensy microcontroller</li>
+                    <li>Arduino flavored C for spectral analysis</li>
+                    <li>MATLAB for computing filter coefficients</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Digital signal processing</li>
+                    <li>Communication systems</li>
+                    <li>Noise reduction techniques</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Pong Gaming Console -->
+    <div id="modal7" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal7')">&times;</span>
+            <h2 class="modal-title">Pong Gaming Console</h2>
+            <p class="modal-date">Completion: 2019</p>
+            <p class="modal-description"> An implementation of the classic Pong game on custom FPGA hardware,
+                including SNES game controller, and sound synthesis. Part of the Digital Design and Computer
+                Architecture course at
+                the Technical University of Vienna.</p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Altera DE2-115 board</li>
+                    <li>VHDL</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Game development</li>
+                    <li>Audio synthesis</li>
+                    <li>Digital hardware design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8: Miniature Factory -->
+    <div id="modal8" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modal8')">&times;</span>
+            <h2 class="modal-title">Miniature Factory</h2>
+            <p class="modal-date">Completion: 2019</p>
+            <p class="modal-description">
+                Controlling miniature factory plant utilizing Siemens S7-1200 PLC, several sensors/actuators connected
+                via
+                ASi, Siemens SIMATIC HMI Panels and microcontrollers communicating over CAN-bus. Part of the Distributed
+                Automation Systems course at
+                the Technical University of Vienna.
+            </p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Siemens S7-1200 PLC</li>
+                    <li>Optical and proximity sensors</li>
+                    <li>HMI panel programming</li>
+                    <li>CAN Bus</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Industrial automation</li>
+                    <li>Industrial communication protocols</li>
+                    <li>Process control</li>
+                    <li>Human-machine interfaces</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function (event) {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal-overlay.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        // Stop propagation for action buttons
+        document.querySelectorAll('.play-button, .git-button, .vps-button').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+
+</html>
