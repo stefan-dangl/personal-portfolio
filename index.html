@@ -604,11 +604,11 @@
       </div>
 
       <div class="works-grid">
-        <!-- Project 1 -->
+        <!-- Project 4 -->
         <div class="work-item">
           <div class="work-image" style="background-image: url('images/rusty_head_snake/rusty_head_snake.png');"
-            onclick="openModal('modal1')"></div>
-          <div class="work-info" onclick="openModal('modal1')">
+            onclick="openModal('modalRustyHeadSnake')"></div>
+          <div class="work-info" onclick="openModal('modalRustyHeadSnake')">
             <h3>Rusty Head Snake</h3>
             <p>WebAssembly game written in Rust</p>
             <div class="button-container">
@@ -620,11 +620,27 @@
           </div>
         </div>
 
+        <!-- Project 3 -->
+        <div class="work-item">
+          <div class="work-image" style="background-image: url('images/booking_manager/booking_manager.png');"
+            onclick="openModal('modalBookingManager')"></div>
+          <div class="work-info" onclick="openModal('modalBookingManager')">
+            <h3>Booking Manager</h3>
+            <p>Lightweight booking tool with focus on seamless updates and device interoperability</p>
+            <div class="button-container">
+              <a href="https://booking-manager-latest.onrender.com/" class="play-button"
+                onclick="event.stopPropagation()">Play</a>
+              <a href="https://github.com/stefan-dangl/booking-manager" class="git-button"
+                onclick="event.stopPropagation()">Git</a>
+            </div>
+          </div>
+        </div>
+
         <!-- Project 2 -->
-        <div class="work-item" onclick="openModal('modal2')">
+        <div class="work-item" onclick="openModal('modalCoMeasuringSystem')">
           <div class="work-image"
             style="background-image: url('images/air_quality_measurement/air_quality_measurement_system.jpg');"
-            onclick="openModal('modal2')"></div>
+            onclick="openModal('modalCoMeasuringSystem')"></div>
           <div class="work-info">
             <h3>Air Quality Measuring System</h3>
             <p>MCU based Measurement / Web based Dashboard</p>
@@ -635,11 +651,11 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 1 -->
         <div class="work-item">
-          <div class="work-image" style="background-image: url('images/vps/vps19.webp');" onclick="openModal('modal3')">
+          <div class="work-image" style="background-image: url('images/vps/vps19.webp');" onclick="openModal('modalVps')">
           </div>
-          <div class="work-info" onclick="openModal('modal3')">
+          <div class="work-info" onclick="openModal('modalVps')">
             <h3>SW Developer at View Point System GmbH</h3>
             <p>Developement of Eyetracking Glasses</p>
             <div class="button-container">
@@ -694,10 +710,10 @@
 
 
   <!-- Project Modals -->
-  <!-- Modal 1: Rusty Head Snake -->
-  <div id="modal1" class="modal-overlay">
+  <!-- Modal 4: Rusty Head Snake -->
+  <div id="modalRustyHeadSnake" class="modal-overlay">
     <div class="modal">
-      <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+      <span class="modal-close" onclick="closeModal('modalRustyHeadSnake')">&times;</span>
       <h2 class="modal-title">Rusty Head Snake</h2>
       <p class="modal-date">Completion: 2025</p>
       <p class="modal-description">A modern take on of the classic Snake game, built with Rust and compiled to
@@ -724,10 +740,42 @@
     </div>
   </div>
 
-  <!-- Modal 2: Carbon Dioxide Measuring System -->
-  <div id="modal2" class="modal-overlay">
+  <!-- Modal 3: Booking Manager -->
+  <div id="modalBookingManager" class="modal-overlay">
     <div class="modal">
-      <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+      <span class="modal-close" onclick="closeModal('modalBookingManager')">&times;</span>
+      <h2 class="modal-title">Booking Manager</h2>
+      <p class="modal-date">Completion: 2025</p>
+      <p class="modal-description">A lightweight booking system designed for small-scale events. The project provides just
+        enough features
+        to solve the problems it was designed for without complexity while focusing on privacy and zero-friction
+        access from any device, seamless updates. <a href="https://booking-manager-latest.onrender.com/" target="_blank"
+          style="color: rgb(20, 20, 164); text-decoration: underline;">Try it out!</a>
+      </p>
+
+      <div class="modal-section">
+        <h3>Technologies Used</h3>
+        <ul class="modal-list">
+          <li>Rust (Axum framework)</li>
+          <li>Html, Css, Javascript</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Related Topics</h3>
+        <ul class="modal-list">
+          <li>Cloud infrastructure</li>
+          <li>Fullstack Webapp (Frontend, Backend, Database)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Carbon Dioxide Measuring System -->
+  <div id="modalCoMeasuringSystem" class="modal-overlay">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal('modalCoMeasuringSystem')">&times;</span>
       <h2 class="modal-title">Carbon Dioxide Measuring System</h2>
       <p class="modal-date">Completion: 2025</p>
       <p class="modal-description">An IoT solution for monitoring indoor air quality with real-time CO₂, SO₂ and NH₃
@@ -757,10 +805,10 @@
     </div>
   </div>
 
-  <!-- Modal 3: View Point System GmbH -->
-  <div id="modal3" class="modal-overlay">
+  <!-- Modal 1: View Point System GmbH -->
+  <div id="modalVps" class="modal-overlay">
     <div class="modal">
-      <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+      <span class="modal-close" onclick="closeModal('modalVps')">&times;</span>
       <h2 class="modal-title">Software Developer at View Point System GmbH</h2>
       <p class="modal-date">Duration: 2022 - Present</p>
       <p class="modal-description">Development of software for advanced eyetracking glasses used in industrial and
