@@ -25,6 +25,8 @@
       --dark-color: #212529;
       --gray-color: #6c757d;
       --max-width: 1200px;
+      --gitlab-color: #FC6D26;
+      --github-color: #000000;
     }
 
     body {
@@ -450,6 +452,125 @@
       background-color: var(--secondary-color);
     }
 
+    /* Open Source Section Styles */
+    .open-source-section {
+      padding: 80px 0;
+    }
+
+    .contributions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contribution-item {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contribution-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .contribution-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .contribution-item:hover:before {
+      background: var(--accent-color);
+    }
+
+    .gitlab-item:hover:before {
+      background: var(--gitlab-color);
+    }
+
+    .github-item:hover:before {
+      background: var(--github-color);
+    }
+
+    .contribution-platform {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--light-color);
+      flex-shrink: 0;
+    }
+
+    .contribution-platform i {
+      font-size: 1.8rem;
+    }
+
+    .gitlab-item .contribution-platform i {
+      color: var(--gitlab-color);
+    }
+
+    .github-item .contribution-platform i {
+      color: var(--github-color);
+    }
+
+    .contribution-details {
+      flex: 1;
+    }
+
+    .contribution-details h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary-color);
+    }
+
+    .contribution-details p {
+      color: var(--secondary-color);
+      margin-bottom: 0;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .contribution-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .contribution-arrow {
+      margin-left: 15px;
+      color: var(--gray-color);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .contribution-item:hover .contribution-arrow {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
     /* Responsive Adjustments */
     @media (max-width: 768px) {
       .header {
@@ -492,6 +613,28 @@
       .work-image {
         height: 200px;
       }
+
+      .contribution-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contribution-platform {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .contribution-platform i {
+        font-size: 1.5rem;
+      }
+
+      .contribution-arrow {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -520,6 +663,20 @@
       .work-image {
         height: 180px;
       }
+
+      .contribution-platform {
+        width: 44px;
+        height: 44px;
+        margin-right: 16px;
+      }
+
+      .contribution-platform i {
+        font-size: 1.5rem;
+      }
+
+      .contribution-details h3 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -531,8 +688,8 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#works">Projects</a></li>
+        <li><a href="#open-source">Contributions</a></li>
         <li><a href="#science">Research</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -559,11 +716,11 @@
       <div class="about-content">
         <p>
           Since 2016, when I built a board computer for an e-bike, I decided to dedicate my life to embedded systems
-          development. Throughout my journey, I’ve had the opportunity to work on exciting projects, including
+          development. Throughout my journey, I've had the opportunity to work on exciting projects, including
           cutting-edge eye-tracking glasses, various measurement and control systems, and even the development of a
           gaming console and a MIPS CPU on an FPGA. In addition to my studies at the Technical University of Vienna, I
           was fortunate to study at the renowned
-          University of Tokyo and Portugal’s Instituto Superior Técnico Lisboa. Despite all the experiences I’ve gained,
+          University of Tokyo and Portugal's Instituto Superior Técnico Lisboa. Despite all the experiences I've gained,
           my hunger for new knowledge remains stronger than ever.
         </p>
 
@@ -626,7 +783,8 @@
             onclick="openModal('modalBookingManager')"></div>
           <div class="work-info" onclick="openModal('modalBookingManager')">
             <h3>Booking Manager</h3>
-            <p>Lightweight booking tool with focus on seamless updates and device interoperability. Playground Admin Password: <i>password</i></p>
+            <p>Lightweight booking tool with focus on seamless updates and device interoperability. Playground Admin
+              Password: <i>password</i></p>
             <div class="button-container">
               <a href="https://booking-manager-latest.onrender.com/" class="play-button"
                 onclick="event.stopPropagation()">Play</a>
@@ -653,7 +811,8 @@
 
         <!-- Project 1 -->
         <div class="work-item">
-          <div class="work-image" style="background-image: url('images/vps/vps19.webp');" onclick="openModal('modalVps')">
+          <div class="work-image" style="background-image: url('images/vps/vps19.webp');"
+            onclick="openModal('modalVps')">
           </div>
           <div class="work-info" onclick="openModal('modalVps')">
             <h3>SW Developer at View Point System GmbH</h3>
@@ -662,6 +821,65 @@
               <a href="https://viewpointsystem.com/en/" class="vps-button" onclick="event.stopPropagation()">Website</a>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source contribution -->
+  <section id="open-source" class="open-source-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Open Source Contributions</h2>
+      </div>
+
+      <div class="contributions-list">
+        <!-- GStreamer Contribution -->
+        <div class="contribution-item gitlab-item">
+          <div class="contribution-platform">
+            <i class="fab fa-gitlab"></i>
+          </div>
+          <div class="contribution-details">
+            <h3>GStreamer</h3>
+            <p>docs: Fix negotiation documentation</p>
+          </div>
+          <div class="contribution-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <a href="https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/a17c566c7e6c89660dcb3ac4c9f5157170ae0a27"
+            class="contribution-link" target="_blank" aria-label="View GStreamer commit"></a>
+        </div>
+
+        <!-- Pinta Contribution 1 -->
+        <div class="contribution-item github-item">
+          <div class="contribution-platform">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contribution-details">
+            <h3>Pinta</h3>
+            <p>Fix select-all-text (CTRL+A)</p>
+          </div>
+          <div class="contribution-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
+            class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
+        </div>
+
+        <!-- Pinta Contribution 2 -->
+        <div class="contribution-item github-item">
+          <div class="contribution-platform">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contribution-details">
+            <h3>Pinta</h3>
+            <p>Allow deletion of whole words with CTRL+BACKSPACE</p>
+          </div>
+          <div class="contribution-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <a href="https://github.com/PintaProject/Pinta/commit/4c4bfc19383187408aaa927bb0fe3d7ac4e3a409"
+            class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
         </div>
       </div>
     </div>
@@ -708,7 +926,6 @@
     </div>
   </footer>
 
-
   <!-- Project Modals -->
   <!-- Modal 4: Rusty Head Snake -->
   <div id="modalRustyHeadSnake" class="modal-overlay">
@@ -746,12 +963,13 @@
       <span class="modal-close" onclick="closeModal('modalBookingManager')">&times;</span>
       <h2 class="modal-title">Booking Manager</h2>
       <p class="modal-date">Completion: 2025</p>
-      <p class="modal-description">A lightweight booking system designed for small-scale events. The project provides just
+      <p class="modal-description">A lightweight booking system designed for small-scale events. The project provides
+        just
         enough features
         to solve the problems it was designed for without complexity while focusing on privacy and zero-friction
         access from any device, seamless updates. <a href="https://booking-manager-latest.onrender.com/" target="_blank"
-          style="color: rgb(20, 20, 164); text-decoration: underline;">Try it out!</a> 
-          (Playground Admin Password: <i>password</i>)
+          style="color: rgb(20, 20, 164); text-decoration: underline;">Try it out!</a>
+        (Playground Admin Password: <i>password</i>)
       </p>
 
       <div class="modal-section">
@@ -782,7 +1000,6 @@
       <p class="modal-description">An IoT solution for monitoring indoor air quality with real-time CO₂, SO₂ and NH₃
         measurements. The system includes sensors connected to a microcontroller, a web dashboard for data
         visualization and a server managing the data transfer from microcontroller to dashboard.</p>
-
 
       <div class="modal-section">
         <h3>Technologies Used</h3>
