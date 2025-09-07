@@ -450,6 +450,7 @@
 
     .pdf-button:hover {
       background-color: var(--secondary-color);
+      transform: translateY(-2px);
     }
 
     /* Open Source Section Styles */
@@ -569,6 +570,27 @@
     .contribution-item:hover .contribution-arrow {
       opacity: 1;
       transform: translateX(5px);
+    }
+
+    .contributions-list .contribution-item:nth-child(n+4) {
+      display: none;
+    }
+
+    .show-more-button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .show-more-button:hover {
+      background-color: var(--secondary-color);
     }
 
     /* Responsive Adjustments */
@@ -834,6 +856,39 @@
       </div>
 
       <div class="contributions-list">
+
+    <!-- Pinta Contribution 1 -->
+    <div class="contribution-item github-item">
+      <div class="contribution-platform">
+        <i class="fab fa-github"></i>
+      </div>
+      <div class="contribution-details">
+        <h3>Pinta</h3>
+        <p>Fix select-all-text (CTRL+A)</p>
+      </div>
+      <div class="contribution-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
+        class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
+    </div>
+
+    <!-- Pinta Contribution 1 -->
+    <div class="contribution-item github-item">
+      <div class="contribution-platform">
+        <i class="fab fa-github"></i>
+      </div>
+      <div class="contribution-details">
+        <h3>Pinta</h3>
+        <p>Fix select-all-text (CTRL+A)</p>
+      </div>
+      <div class="contribution-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
+        class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
+    </div>
+
         <!-- GStreamer Contribution -->
         <div class="contribution-item gitlab-item">
           <div class="contribution-platform">
@@ -882,6 +937,8 @@
             class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
         </div>
       </div>
+      <!-- Show More Button -->
+      <button class="show-more-button">Show More</button>
     </div>
   </section>
 
@@ -1059,7 +1116,6 @@
     </div>
   </div>
 
-
   <script>
     // Modal functions
     function openModal(modalId) {
@@ -1098,6 +1154,34 @@
     document.querySelectorAll('.play-button, .git-button, .vps-button').forEach(button => {
       button.addEventListener('click', function (e) {
         e.stopPropagation();
+      });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const contributions = document.querySelectorAll('.contributions-list .contribution-item');
+      const showMoreButton = document.querySelector('.show-more-button');
+      let showingAll = false;
+
+      // Add click event to Show More button
+      showMoreButton.addEventListener('click', function () {
+        showingAll = !showingAll;
+
+        if (showingAll) {
+          // Show all contributions
+          contributions.forEach(item => {
+            item.style.display = 'flex';
+          });
+          showMoreButton.textContent = 'Show Less';
+        } else {
+          // Show only first 3 contributions
+          contributions.forEach((item, index) => {
+            if (index >= 3) {
+              item.style.display = 'none';
+            }
+          });
+          showMoreButton.textContent = 'Show More';
+        }
       });
     });
   </script>
