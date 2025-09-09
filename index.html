@@ -93,6 +93,7 @@
       transform: translateY(-2px);
     }
 
+
     /* Project Button Styles */
     .play-button,
     .vps-button,
@@ -473,10 +474,18 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
       border: 1px solid #f0f0f0;
       position: relative;
+      opacity: 0;
       overflow: hidden;
+      transform: translateY(-10px);
+    }
+
+    .contribution-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 100px;
     }
 
     .contribution-item:before {
@@ -586,9 +595,9 @@
       border-radius: 4px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s ease;
     }
-    
+
     .show-more-button:hover {
       background-color: var(--secondary-color);
     }
@@ -857,40 +866,40 @@
 
       <div class="contributions-list">
 
-    <!-- Pinta Contribution 1 -->
-    <div class="contribution-item github-item">
-      <div class="contribution-platform">
-        <i class="fab fa-github"></i>
-      </div>
-      <div class="contribution-details">
-        <h3>Pinta</h3>
-        <p>Fix select-all-text (CTRL+A)</p>
-      </div>
-      <div class="contribution-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
-      <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
-        class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
-    </div>
+        <!-- Pinta Contribution 1 -->
+        <div class="contribution-item github-item visible">
+          <div class="contribution-platform">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contribution-details">
+            <h3>Pinta</h3>
+            <p>Fix select-all-text (CTRL+A)</p>
+          </div>
+          <div class="contribution-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
+            class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
+        </div>
 
-    <!-- Pinta Contribution 1 -->
-    <div class="contribution-item github-item">
-      <div class="contribution-platform">
-        <i class="fab fa-github"></i>
-      </div>
-      <div class="contribution-details">
-        <h3>Pinta</h3>
-        <p>Fix select-all-text (CTRL+A)</p>
-      </div>
-      <div class="contribution-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
-      <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
-        class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
-    </div>
+        <!-- Pinta Contribution 1 -->
+        <div class="contribution-item github-item visible">
+          <div class="contribution-platform">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contribution-details">
+            <h3>Pinta</h3>
+            <p>Fix select-all-text (CTRL+A)</p>
+          </div>
+          <div class="contribution-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <a href="https://github.com/PintaProject/Pinta/commit/52a17721dddb512ca0be71ddffacab5ba548dbb8"
+            class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
+        </div>
 
         <!-- GStreamer Contribution -->
-        <div class="contribution-item gitlab-item">
+        <div class="contribution-item gitlab-item visible">
           <div class="contribution-platform">
             <i class="fab fa-gitlab"></i>
           </div>
@@ -936,6 +945,7 @@
           <a href="https://github.com/PintaProject/Pinta/commit/4c4bfc19383187408aaa927bb0fe3d7ac4e3a409"
             class="contribution-link" target="_blank" aria-label="View Pinta commit"></a>
         </div>
+
       </div>
       <!-- Show More Button -->
       <button class="show-more-button">Show More</button>
@@ -1158,26 +1168,68 @@
     });
 
 
+      // document.addEventListener('DOMContentLoaded', function () {
+      //     const contributions = document.querySelectorAll('.contributions-list .contribution-item');
+      //     const showMoreButton = document.querySelector('.show-more-button');
+      //     let showingAll = false;
+
+      //     // Add click event to Show More button
+      //     showMoreButton.addEventListener('click', function () {
+      //       showingAll = !showingAll;
+
+      //       if (showingAll) {
+      //         // Show all contributions
+      //         contributions.forEach(item => {
+      //           item.style.display = 'flex';
+      //         });
+      //         showMoreButton.textContent = 'Show Less';
+      //       } else {
+      //         // Show only first 3 contributions
+      //         contributions.forEach((item, index) => {
+      //           if (index >= 3) {
+      //             item.style.display = 'none';
+      //           }
+      //         });
+      //         showMoreButton.textContent = 'Show More';
+      //       }
+      //     });
+      //   });
+
     document.addEventListener('DOMContentLoaded', function () {
       const contributions = document.querySelectorAll('.contributions-list .contribution-item');
       const showMoreButton = document.querySelector('.show-more-button');
+      // const visibleCount = document.getElementById('visible-count');
       let showingAll = false;
+
+      // Function to update visible count
+      function updateVisibleCount() {
+        const visibleItems = document.querySelectorAll('.contribution-item.visible').length;
+        visibleCount.textContent = visibleItems;
+      }
 
       // Add click event to Show More button
       showMoreButton.addEventListener('click', function () {
         showingAll = !showingAll;
 
         if (showingAll) {
-          // Show all contributions
-          contributions.forEach(item => {
+          console.log("index: ", contributions.length);
+
+          // Show all contributions with animation
+          contributions.forEach((item, index) => {
             item.style.display = 'flex';
+            setTimeout(() => {
+              console.log("add visable");
+              item.classList.add('visible');
+            }, index * 10);
           });
           showMoreButton.textContent = 'Show Less';
         } else {
-          // Show only first 3 contributions
+          // Hide contributions beyond the first 3 with animation
           contributions.forEach((item, index) => {
             if (index >= 3) {
+              console.log("remove visable");
               item.style.display = 'none';
+                item.classList.remove('visible');
             }
           });
           showMoreButton.textContent = 'Show More';
