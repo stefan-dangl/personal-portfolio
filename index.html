@@ -775,8 +775,7 @@
         </div>
         <div class="tech-item">
           <i class="fas fa-robot"></i>
-          <span>STM32</span>
-          <span>Arduino</span>
+          <span>Embedded</span>
         </div>
       </div>
     </div>
@@ -814,7 +813,7 @@
             onclick="openModal('modalBookingManager')"></div>
           <div class="work-info" onclick="openModal('modalBookingManager')">
             <h3>Booking Manager</h3>
-            <p>Lightweight booking tool with focus on seamless updates and device interoperability. Playground Admin
+            <p>Lightweight booking tool. Focus on seamless updates and device interoperability. Playground
               Password: <i>password</i></p>
             <div class="button-container">
               <a href="https://booking-manager-latest.onrender.com/" class="play-button"
@@ -826,15 +825,15 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="work-item" onclick="openModal('modalCoMeasuringSystem')">
+        <div class="work-item" onclick="openModal('modalLedController')">
           <div class="work-image"
-            style="background-image: url('images/air_quality_measurement/air_quality_measurement_system.jpg');"
-            onclick="openModal('modalCoMeasuringSystem')"></div>
+            style="background-image: url('');"
+            onclick="openModal('modalLedController')"></div>
           <div class="work-info">
-            <h3>Air Quality Measuring System</h3>
-            <p>MCU based Measurement / Web based Dashboard</p>
+            <h3>WiFi LED Controller</h3>
+            <p>Connect the Controller to your WiFi to change the colors of an Led Strip via your phone</p>
             <div class="button-container">
-              <a href="https://github.com/stefan-dangl/air-observation-system" class="git-button"
+              <a href="https://github.com/stefan-dangl/led-controller" class="git-button"
                 onclick="event.stopPropagation()">Git</a>
             </div>
           </div>
@@ -1031,9 +1030,7 @@
       <h2 class="modal-title">Booking Manager</h2>
       <p class="modal-date">Completion: 2025</p>
       <p class="modal-description">A lightweight booking system designed for small-scale events. The project provides
-        just
-        enough features
-        to solve the problems it was designed for without complexity while focusing on privacy and zero-friction
+        just enough features to solve the problems it was designed for without complexity while focusing on privacy and zero-friction
         access from any device, seamless updates. <a href="https://booking-manager-latest.onrender.com/" target="_blank"
           style="color: rgb(20, 20, 164); text-decoration: underline;">Try it out!</a>
         (Playground Admin Password: <i>password</i>)
@@ -1043,7 +1040,7 @@
         <h3>Technologies Used</h3>
         <ul class="modal-list">
           <li>Rust (Axum framework)</li>
-          <li>Html, Css, Javascript</li>
+          <li>HTML, CSS, JavaScript</li>
           <li>PostgreSQL</li>
         </ul>
       </div>
@@ -1058,24 +1055,25 @@
     </div>
   </div>
 
-  <!-- Modal 2: Carbon Dioxide Measuring System -->
-  <div id="modalCoMeasuringSystem" class="modal-overlay">
+  <!-- Modal 2: WiFi LED Controller -->
+  <div id="modalLedController" class="modal-overlay">
     <div class="modal">
-      <span class="modal-close" onclick="closeModal('modalCoMeasuringSystem')">&times;</span>
-      <h2 class="modal-title">Carbon Dioxide Measuring System</h2>
+      <span class="modal-close" onclick="closeModal('modalLedController')">&times;</span>
+      <h2 class="modal-title">WiFi LED Controller</h2>
       <p class="modal-date">Completion: 2025</p>
-      <p class="modal-description">An IoT solution for monitoring indoor air quality with real-time CO₂, SO₂ and NH₃
-        measurements. The system includes sensors connected to a microcontroller, a web dashboard for data
-        visualization and a server managing the data transfer from microcontroller to dashboard.</p>
+      <p class="modal-description">An LED controller that can be accessed via its own WiFi access point or connected to a home network. The web UI,
+        provided by the ESP32 microcontroller, allows to set static colors or to apply various patterns, like a rainbow mode.
+        The UI focuses on simplicity and usability to allow children to control the LEDs as well. I assembled some of these LED
+        controllers for family and friends, featuring a 1.5m LED strip. However, various lengths should be supported.
+      </p>
 
       <div class="modal-section">
         <h3>Technologies Used</h3>
         <ul class="modal-list">
-          <li>STM32 microcontroller</li>
-          <li>Arduino Flavored C</li>
-          <li>MQ-135 Gas Sensor</li>
-          <li>Python backend</li>
-          <li>Web dashboard</li>
+          <li>ESP32 microcontroller</li>
+          <li>Rust (ESP-IDF)</li>
+          <li>WS2812 NeoPixel LED Strip</li>
+          <li>HTML, CSS, JavaScript</li>
         </ul>
       </div>
 
@@ -1083,8 +1081,9 @@
         <h3>Related Topics</h3>
         <ul class="modal-list">
           <li>IoT Systems</li>
-          <li>Environmental monitoring</li>
-          <li>Real-time data visualization</li>
+          <li>WiFi (AP, STA)</li>
+          <li>Embedded Web Servers</li>
+          <li>Low barrier User Experience</li>
         </ul>
       </div>
     </div>
