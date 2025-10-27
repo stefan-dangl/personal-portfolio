@@ -116,7 +116,10 @@
         }
 
         .button-container {
-            margin-top: 10px;
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 0;
         }
 
         /* Selected Works Section */
@@ -196,6 +199,8 @@
 
         .work-info {
             padding: 15px;
+            position: relative;
+            min-height: 200px; 
         }
 
         .work-item h3 {
@@ -482,7 +487,7 @@
                         onclick="openModal('modalBookingManager')"></div>
                     <div class="work-info" onclick="openModal('modalBookingManager')">
                         <h3>Booking Manager</h3>
-                        <p>Lightweight booking tool with focus on seamless updates and device interoperability. Playground Admin Password: <i>password</i></p>
+                        <p>Focus on seamless updates and device interoperability. Playground Admin Password: <i>password</i></p>
                         <div class="button-container">
                             <a href="https://booking-manager-latest.onrender.com/" class="play-button"
                                 onclick="event.stopPropagation()">Play</a>

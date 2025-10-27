@@ -119,7 +119,10 @@
     }
 
     .button-container {
-      margin-top: 10px;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 0;
     }
 
     /* Selected Works Section */
@@ -160,6 +163,7 @@
       border-radius: 8px;
       overflow: hidden;
       transition: all 0.3s ease;
+      grid-template-rows: auto auto 1fr;
     }
 
     .work-item:hover {
@@ -197,6 +201,8 @@
 
     .work-info {
       padding: 15px;
+      position: relative;
+      min-height: 200px; 
     }
 
     .work-item h3 {
@@ -835,7 +841,7 @@
             onclick="openModal('modalBookingManager')"></div>
           <div class="work-info" onclick="openModal('modalBookingManager')">
             <h3>Booking Manager</h3>
-            <p>Lightweight booking tool. Focus on seamless updates and device interoperability. Playground
+            <p>Focus on seamless updates and device interoperability. Playground
               Password: <i>password</i></p>
             <div class="button-container">
               <a href="https://booking-manager-latest.onrender.com/" class="play-button"
@@ -985,6 +991,7 @@
           <h3>Master Thesis</h3>
           <p class="year">2024</p>
           <p class="title">BPLS - Back Propagation Layer Scheduling</p>
+          <br>
           <a href="https://repositum.tuwien.at/handle/20.500.12708/198411" class="pdf-button" target="_blank">
             <i class="fas fa-file-pdf"></i> View PDF
           </a>
@@ -1192,37 +1199,9 @@
     });
 
 
-      // document.addEventListener('DOMContentLoaded', function () {
-      //     const contributions = document.querySelectorAll('.contributions-list .contribution-item');
-      //     const showMoreButton = document.querySelector('.show-more-button');
-      //     let showingAll = false;
-
-      //     // Add click event to Show More button
-      //     showMoreButton.addEventListener('click', function () {
-      //       showingAll = !showingAll;
-
-      //       if (showingAll) {
-      //         // Show all contributions
-      //         contributions.forEach(item => {
-      //           item.style.display = 'flex';
-      //         });
-      //         showMoreButton.textContent = 'Show Less';
-      //       } else {
-      //         // Show only first 3 contributions
-      //         contributions.forEach((item, index) => {
-      //           if (index >= 3) {
-      //             item.style.display = 'none';
-      //           }
-      //         });
-      //         showMoreButton.textContent = 'Show More';
-      //       }
-      //     });
-      //   });
-
     document.addEventListener('DOMContentLoaded', function () {
       const contributions = document.querySelectorAll('.contributions-list .contribution-item');
       const showMoreButton = document.querySelector('.show-more-button');
-      // const visibleCount = document.getElementById('visible-count');
       let showingAll = false;
 
       // Function to update visible count
