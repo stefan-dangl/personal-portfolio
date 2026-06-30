@@ -530,6 +530,24 @@
                 </div>
 
                 <!-- Project 6 -->
+                 <div class="work-item" onclick="openModal('modalLedController')">
+                    <div class="video-container">
+                        <video class="work-video" autoplay muted loop playsinline>
+                            <source src="images/gst-synth/demo_song.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-info">
+                        <h3>Gstreamer based Synthesizer</h3>
+                        <p>Comes with various effects and configuration options</p>
+                        <div class="button-container">
+                            <a href="https://github.com/stefan-dangl/gst-synth" class="git-button"
+                                onclick="event.stopPropagation()">Git</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
                 <div class="work-item" onclick="openModal('modalCoMeasuringSystem')">
                     <div class="work-image"
                         style="background-image: url('images/air_quality_measurement/air_quality_measurement_system.jpg');"
@@ -758,6 +776,37 @@
                     <li>Embedded Linux</li>
                     <li>Multimedia</li>
                     <li>Fullstack webapp</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: WiFi LED Controller -->
+    <div id="modalGstSynth" class="modal-overlay">
+        <div class="modal">
+            <span class="modal-close" onclick="closeModal('modalGstSynth')">&times;</span>
+            <h2 class="modal-title">Gstreamer Synthesizer</h2>
+            <p class="modal-date">Completion: 2026</p>
+            <p class="modal-description">
+                ...
+            </p>
+
+            <div class="modal-section">
+                <h3>Technologies Used</h3>
+                <ul class="modal-list">
+                    <li>Gstreamer</li>
+                    <li>Gtk4</li>
+                    <li>Rust</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Related Topics</h3>
+                <ul class="modal-list">
+                    <li>Multimedia</li>
+                    <li>Gui Development</li>
+                    <li>Signal Processing</li>
+                    <li>Music Production</li>
                 </ul>
             </div>
         </div>
