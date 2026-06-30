@@ -192,6 +192,29 @@
             transform: scale(1.05);
         }
 
+        .mute-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
+
+        .mute-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
         .work-image {
             height: 250px;
             background-size: cover;
@@ -537,6 +560,9 @@
                             <source src="images/gst-synth/demo_song.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        <button class="mute-button" onclick="toggleMute(event, this)" aria-label="Unmute video">
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </button>
                     </div>
                     <div class="work-info">
                         <h3>Gstreamer based Synthesizer</h3>
@@ -1059,6 +1085,16 @@
                 e.stopPropagation();
             });
         });
+
+        // Mute/unmute toggle for project videos
+        function toggleMute(event, button) {
+            event.stopPropagation();
+            const video = button.parentElement.querySelector('video');
+            video.muted = !video.muted;
+            const icon = button.querySelector('i');
+            icon.classList.toggle('fa-volume-xmark', video.muted);
+            icon.classList.toggle('fa-volume-high', !video.muted);
+        }
     </script>
 </body>
 
